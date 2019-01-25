@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class Movement : MonoBehaviour
     bool peeking;
 
     Animation leftPeek;
+
+    public Text doorText;
 
     // Start is called before the first frame update
     void Start()
@@ -120,5 +123,10 @@ public class Movement : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
 
+    }
+
+    public void DisplayText()
+    {
+        doorText.text = "Press E";
     }
 }

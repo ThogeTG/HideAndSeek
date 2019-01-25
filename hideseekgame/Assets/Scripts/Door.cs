@@ -23,6 +23,7 @@ public class Door : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             playerMovement = other.gameObject.GetComponent<Movement>();
+            playerMovement.DisplayText();
         }
     }
 }
