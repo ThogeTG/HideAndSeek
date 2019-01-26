@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class Jump : MonoBehaviour
 {
@@ -11,6 +12,10 @@ public class Jump : MonoBehaviour
 
     Rigidbody rigBod;
 
+    public PlayerIndex playerIndex;
+    GamePadState state;
+    GamePadState prevState;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +25,9 @@ public class Jump : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+
         RaycastHit ray;
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out ray, groundColDistance))
@@ -38,15 +46,12 @@ public class Jump : MonoBehaviour
 
         if (grounded == true)
         {
-            /*if (Input.GetKeyDown(KeyCode.Space))
+            if (state.Buttons.A == ButtonState.Pressed)
             {
-                //Kokeile tätä uudelleen sitten kun saat liikkumisscriptin takaisin
                 //JA KORJAA CROUCH
-                //nii ja lisää referenssi groundediin movementiin
-                //print("Kakka!");
-                //rigBod.velocity = transform.up * jumpPower;
-                //transform.Translate(Vector3.up);
-            }*/
+                //nii ja lisää referenssi groundediin movementiin (crouch)
+                rigBod.velocity = transform.up * jumpPower;
+            }
         }
     }
 }

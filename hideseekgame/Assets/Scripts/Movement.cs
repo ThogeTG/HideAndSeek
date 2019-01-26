@@ -118,24 +118,26 @@ public class Movement : MonoBehaviour
     void Crouch()
     {
         Vector3 pos = transform.position;
-        if (state.Buttons.B == ButtonState.Pressed /*&& prevState.Buttons.B == ButtonState.Released*/)
+
+        if (state.Buttons.B == ButtonState.Pressed && prevState.Buttons.B == ButtonState.Released)
         {
-            crouching = true;
-        }
-        else
-        {
-            crouching = false;
+            if (!crouching)
+            {
+                crouching = true;
+            }
+            else
+            {
+                crouching = false;
+            }
         }
 
         if (crouching == true)
         {
-            pos.y = Mathf.Lerp(transform.position.y, crouchHeight, .3f);
-            transform.position = pos;
+            GetComponent<CapsuleCollider>().height = 1.1f;
         }
         else
         {
-            pos.y = Mathf.Lerp(transform.position.y, originHeight, .3f);
-            transform.position = pos;
+            GetComponent<CapsuleCollider>().height = 2;
         }
 
     }
