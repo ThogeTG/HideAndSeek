@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using XInputDotNetPure;
+
 
 public class Movement : MonoBehaviour
 {
+    public int player;
+    public PlayerIndex playerIndex;
     float realSpeed;
     public float walkSpeed = 10f;
     public float runSpeed = 20f;
     public float crawlSpeed = 2.5f;
 
+    
     float translation;
     float strafe;
 
@@ -40,6 +46,11 @@ public class Movement : MonoBehaviour
 
     public Text doorText;
 
+    GamePadState state;
+    GamePadState prevState;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,9 +68,19 @@ public class Movement : MonoBehaviour
         leftPeek = GetComponent<Animation>();
     }
 
+    private void Update()
+    {
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!crouching)
+        {
+            originHeight = transform.position.y;
+        }
+
         Move();
 
         Crouch();
@@ -72,11 +93,11 @@ public class Movement : MonoBehaviour
 
     void Move()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (state.Buttons.RightShoulder == ButtonState.Pressed)
         {
             realSpeed = runSpeed;
         }
-        else if (Input.GetKey(KeyCode.C))
+        else if (state.Buttons.B == ButtonState.Pressed)
         {
             realSpeed = crawlSpeed;
         }
@@ -86,8 +107,8 @@ public class Movement : MonoBehaviour
         }
         
 
-        translation = Input.GetAxis("Vertical") * realSpeed;
-        strafe = Input.GetAxis("Horizontal") * realSpeed;
+        translation = Input.GetAxis("VMove" + player) * realSpeed;
+        strafe = Input.GetAxis("HMove" + player) * realSpeed;
 
         translation *= Time.deltaTime;
         strafe *= Time.deltaTime;
@@ -98,8 +119,7 @@ public class Movement : MonoBehaviour
     void Crouch()
     {
         Vector3 pos = transform.position;
-
-        if (Input.GetKey(KeyCode.C))
+        if (state.Buttons.B == ButtonState.Pressed /*&& prevState.Buttons.B == ButtonState.Released*/)
         {
             crouching = true;
         }
@@ -118,6 +138,7 @@ public class Movement : MonoBehaviour
             pos.y = Mathf.Lerp(transform.position.y, originHeight, .3f);
             transform.position = pos;
         }
+
     }
 
     private void OnTriggerStay(Collider other)
