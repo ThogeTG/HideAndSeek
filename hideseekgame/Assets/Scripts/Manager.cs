@@ -22,7 +22,7 @@ public class Manager : MonoBehaviour
         {
             timer -= Time.deltaTime;
             string minutes = ((int)timer / 60).ToString();
-            string seconds = (timer % 60).ToString("f2");
+            string seconds = (timer % 60).ToString("f0");
             string niceTime = string.Format("{0:0}:{1:00}", minutes, seconds);
             text.text = minutes + ":" + seconds;
         }
