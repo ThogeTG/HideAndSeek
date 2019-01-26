@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using XInputDotNetPure;
 
 
@@ -107,8 +106,8 @@ public class Movement : MonoBehaviour
         }
         
 
-        translation = Input.GetAxis("VMove" + player) * realSpeed;
-        strafe = Input.GetAxis("HMove" + player) * realSpeed;
+        translation = state.ThumbSticks.Left.Y * realSpeed;
+        strafe = state.ThumbSticks.Left.X * realSpeed;
 
         translation *= Time.deltaTime;
         strafe *= Time.deltaTime;
