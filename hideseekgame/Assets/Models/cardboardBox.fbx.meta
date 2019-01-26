@@ -1,0 +1,224 @@
+fileFormatVersion: 2
+guid: 380bee32413b4f449890daacfd4c0eac
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Armature
+    100002: Armature.001
+    100004: Armature.002
+    100006: Armature.003
+    100008: Bone
+    100010: Bone 1
+    100012: Bone 2
+    100014: Bone 3
+    100016: Bone_end
+    100018: Bone_end 1
+    100020: Bone_end 2
+    100022: Bone_end 3
+    100024: //RootNode
+    100026: Cube.001
+    100028: Cube.002
+    100030: Cube.003
+    100032: Cube.004
+    100034: Cube.006
+    400000: Armature
+    400002: Armature.001
+    400004: Armature.002
+    400006: Armature.003
+    400008: Bone
+    400010: Bone 1
+    400012: Bone 2
+    400014: Bone 3
+    400016: Bone_end
+    400018: Bone_end 1
+    400020: Bone_end 2
+    400022: Bone_end 3
+    400024: //RootNode
+    400026: Cube.001
+    400028: Cube.002
+    400030: Cube.003
+    400032: Cube.004
+    400034: Cube.006
+    2100000: Material.001
+    2100002: Material.002
+    2100004: Material.003
+    2100006: Material.004
+    2300000: Cube.006
+    3300000: Cube.006
+    4300000: Cube.004
+    4300002: Cube.003
+    4300004: Cube.002
+    4300006: Cube.001
+    4300008: Cube.006
+    7400000: Armature.003|Armature.001Action
+    7400002: Armature.003|Armature.002Action
+    7400004: Armature.003|Armature.003Action
+    7400006: Armature.003|ArmatureAction
+    7400008: Armature.003|Cube.001Action
+    7400010: Armature.003|Cube.002Action
+    7400012: Armature.003|Cube.003Action
+    7400014: Armature.003|Cube.004Action
+    7400016: Armature.003|Cube.006Action
+    7400018: Armature.002|Armature.001Action
+    7400020: Armature.002|Armature.002Action
+    7400022: Armature.002|Armature.003Action
+    7400024: Armature.002|ArmatureAction
+    7400026: Armature.002|Cube.001Action
+    7400028: Armature.002|Cube.002Action
+    7400030: Armature.002|Cube.003Action
+    7400032: Armature.002|Cube.004Action
+    7400034: Armature.002|Cube.006Action
+    7400036: Armature.001|Armature.001Action
+    7400038: Armature.001|Armature.002Action
+    7400040: Armature.001|Armature.003Action
+    7400042: Armature.001|ArmatureAction
+    7400044: Armature.001|Cube.001Action
+    7400046: Armature.001|Cube.002Action
+    7400048: Armature.001|Cube.003Action
+    7400050: Armature.001|Cube.004Action
+    7400052: Armature.001|Cube.006Action
+    7400054: Cube.004|Armature.001Action
+    7400056: Cube.004|Armature.002Action
+    7400058: Cube.004|Armature.003Action
+    7400060: Cube.004|ArmatureAction
+    7400062: Cube.004|Cube.001Action
+    7400064: Cube.004|Cube.002Action
+    7400066: Cube.004|Cube.003Action
+    7400068: Cube.004|Cube.004Action
+    7400070: Cube.004|Cube.006Action
+    7400072: Cube.003|Armature.001Action
+    7400074: Cube.003|Armature.002Action
+    7400076: Cube.003|Armature.003Action
+    7400078: Cube.003|ArmatureAction
+    7400080: Cube.003|Cube.001Action
+    7400082: Cube.003|Cube.002Action
+    7400084: Cube.003|Cube.003Action
+    7400086: Cube.003|Cube.004Action
+    7400088: Cube.003|Cube.006Action
+    7400090: Cube.002|Armature.001Action
+    7400092: Cube.002|Armature.002Action
+    7400094: Cube.002|Armature.003Action
+    7400096: Cube.002|ArmatureAction
+    7400098: Cube.002|Cube.001Action
+    7400100: Cube.002|Cube.002Action
+    7400102: Cube.002|Cube.003Action
+    7400104: Cube.002|Cube.004Action
+    7400106: Cube.002|Cube.006Action
+    7400108: Armature|Armature.001Action
+    7400110: Armature|Armature.002Action
+    7400112: Armature|Armature.003Action
+    7400114: Armature|ArmatureAction
+    7400116: Armature|Cube.001Action
+    7400118: Armature|Cube.002Action
+    7400120: Armature|Cube.003Action
+    7400122: Armature|Cube.004Action
+    7400124: Armature|Cube.006Action
+    7400126: Cube.001|Armature.001Action
+    7400128: Cube.001|Armature.002Action
+    7400130: Cube.001|Armature.003Action
+    7400132: Cube.001|ArmatureAction
+    7400134: Cube.001|Cube.001Action
+    7400136: Cube.001|Cube.002Action
+    7400138: Cube.001|Cube.003Action
+    7400140: Cube.001|Cube.004Action
+    7400142: Cube.001|Cube.006Action
+    7400144: Cube.006|Armature.001Action
+    7400146: Cube.006|Armature.002Action
+    7400148: Cube.006|Armature.003Action
+    7400150: Cube.006|ArmatureAction
+    7400152: Cube.006|Cube.001Action
+    7400154: Cube.006|Cube.002Action
+    7400156: Cube.006|Cube.003Action
+    7400158: Cube.006|Cube.004Action
+    7400160: Cube.006|Cube.006Action
+    9500000: //RootNode
+    13700000: Cube.001
+    13700002: Cube.002
+    13700004: Cube.003
+    13700006: Cube.004
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.9999999
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
