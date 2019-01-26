@@ -112,6 +112,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!20 &122411996 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3902352363913363227, guid: 7734654805151564592fe12e311744d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 287081048}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &201114895 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3902352363913363227, guid: 7734654805151564592fe12e311744d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 581908480}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &287081048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -238,6 +250,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902352363913363227, guid: 7734654805151564592fe12e311744d9,
+        type: 3}
+      propertyPath: m_Depth
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902352363913363227, guid: 7734654805151564592fe12e311744d9,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902352363913363227, guid: 7734654805151564592fe12e311744d9,
+        type: 3}
+      propertyPath: m_RenderingPath
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3902352363913363225, guid: 7734654805151564592fe12e311744d9,
         type: 3}
@@ -372,6 +399,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 3902352363913363226, guid: 7734654805151564592fe12e311744d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7734654805151564592fe12e311744d9, type: 3}
+--- !u!20 &1197330435 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 3902352363913363227, guid: 7734654805151564592fe12e311744d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1778077612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1210023490
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,9 +945,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5627012198053464987, guid: 875976ea5d437e944af3e6a41f364deb,
         type: 3}
-      propertyPath: timer
-      value: 70
+      propertyPath: hiderCams.Array.size
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5627012198053464987, guid: 875976ea5d437e944af3e6a41f364deb,
+        type: 3}
+      propertyPath: timer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5627012198053464987, guid: 875976ea5d437e944af3e6a41f364deb,
+        type: 3}
+      propertyPath: hiderCams.Array.data[0]
+      value: 
+      objectReference: {fileID: 122411996}
+    - target: {fileID: 5627012198053464987, guid: 875976ea5d437e944af3e6a41f364deb,
+        type: 3}
+      propertyPath: hiderCams.Array.data[1]
+      value: 
+      objectReference: {fileID: 201114895}
+    - target: {fileID: 5627012198053464987, guid: 875976ea5d437e944af3e6a41f364deb,
+        type: 3}
+      propertyPath: hiderCams.Array.data[2]
+      value: 
+      objectReference: {fileID: 1197330435}
     - target: {fileID: 5627012197973416495, guid: 875976ea5d437e944af3e6a41f364deb,
         type: 3}
       propertyPath: m_LocalPosition.z
