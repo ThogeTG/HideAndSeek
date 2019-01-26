@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class ItemHold : MonoBehaviour
 {
     Transform originParent;
     GameObject heldObject;
     Vector3 holdPosition;
+    public PlayerIndex playerIndex;
+
+    GamePadState state;
+    GamePadState prevState;
 
     Camera cam;
 
@@ -25,6 +30,9 @@ public class ItemHold : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+
         if (heldObject != null)
         {
             if (holding == true)
@@ -32,12 +40,12 @@ public class ItemHold : MonoBehaviour
                 heldObject.transform.rotation = gameObject.transform.GetChild(0).rotation;
                 heldObject.transform.position = gameObject.transform.GetChild(0).position + (heldObject.transform.rotation * (Vector3.forward - height) * distance);
 
-                if (Input.GetMouseButtonDown(1))
+                if (state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released)
                 {
                     holding = false;
                 }
 
-                if (Input.GetKeyDown(KeyCode.F))
+                if (state.Buttons.Y == ButtonState.Pressed && prevState.Buttons.Y == ButtonState.Released)
                 {
                     heldObject.GetComponent<Rigidbody>().velocity = cam.transform.forward * throwPower;
 
@@ -54,7 +62,7 @@ public class ItemHold : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Holdable" && Input.GetMouseButtonDown(0))
+        if (other.gameObject.tag == "Holdable" && state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released)
         {
             Hold(other.gameObject.transform.parent.gameObject);
         }
