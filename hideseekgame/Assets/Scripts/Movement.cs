@@ -158,7 +158,7 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (manager.round == 1 && collision.transform.tag == "Player" && player == 1)
+        if (manager.round == 1 && collision.transform.tag == "Player" && player == 1 && !manager.points.Contains("Player " + collision.gameObject.GetComponent<Movement>().player.ToString()+ "\n"))
         {
             manager.points.Add("Player " + collision.gameObject.GetComponent<Movement>().player.ToString() + "\n");
             collision.gameObject.GetComponent<Movement>().enabled = false;

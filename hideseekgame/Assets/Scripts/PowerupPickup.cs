@@ -13,10 +13,11 @@ public class PowerupPickup : MonoBehaviour
     public List<GameObject> currentShoots = new List<GameObject>();
     public GameObject kakka;
 
-    bool shooter = true;
+    bool shooter;
     Camera cam;
 
-    public GameObject[] powerupTexts;
+    //public GameObject[] powerupTexts;'
+    public List<GameObject> powerupTexts = new List<GameObject>();
     GameObject myTexts;
     //
     GameObject shootText;
@@ -33,23 +34,26 @@ public class PowerupPickup : MonoBehaviour
 
     GameObject childBin;
 
+    Rigidbody rigbod;
+
+    bool powered;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (gameObject.name == "Player 1")
+        if (gameObject.name == "Player1")
         {
             playerId = 1;
         }
-        else if (gameObject.name == "Player 2")
+        else if (gameObject.name == "Player2")
         {
             playerId = 2;
         }
-        else if (gameObject.name == "Player 3")
+        else if (gameObject.name == "Player3")
         {
             playerId = 3;
         }
-        else if (gameObject.name == "Player 4")
+        else if (gameObject.name == "Player4")
         {
             playerId = 4;
         }
@@ -57,7 +61,6 @@ public class PowerupPickup : MonoBehaviour
         newForm = transform.GetChild(1);
         move = GetComponent<Movement>();
         cam = transform.GetChild(0).GetComponent<Camera>();
-        childBin = GameObject.Find("PutChildsHere");
 
         for (int i = 0; i < 4; i++)
         {
@@ -76,6 +79,8 @@ public class PowerupPickup : MonoBehaviour
         maximizeText.SetActive(false);
         minimizeText.SetActive(false);
         transformText.SetActive(false);
+
+        rigbod = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -98,14 +103,16 @@ public class PowerupPickup : MonoBehaviour
                     Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 
                     Instantiate(shootItems[rand], position, Quaternion.identity);
+                    shootItems[rand].GetComponent<Rigidbody>().velocity = transform.forward * 5;
+
                     currentShoots.Add(shootItems[rand]);
                 }
                 else if (currentShoots.Count > 10)
                 {
-
-                    /*Destroy(currentShoots[0]);
-                    currentShoots.RemoveAt(0);
-                    currentShoots.RemoveAll(list_item => list_item == null);*/
+                    currentShoots[0].SetActive(false);
+                    currentShoots[0].transform.position = transform.position;
+                    currentShoots[0].SetActive(true);
+                    currentShoots[0].GetComponent<Rigidbody>().velocity = transform.forward * 5;
                 }
             }
         }
@@ -113,8 +120,9 @@ public class PowerupPickup : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Powerup")
+        if (other.gameObject.tag == "Powerup" && powered == false)
         {
+
             int rand;
 
             rand = Random.Range(0, powerUps.Length);
@@ -135,7 +143,9 @@ public class PowerupPickup : MonoBehaviour
             else if (rand == 2)
             {
                 //Become TRANSFORMED
-                GetComponent<CapsuleCollider>().enabled = false;
+                
+                //rigbod.velocity = transform.up * 4;
+                //GetComponent<CapsuleCollider>().enabled = false;
                 GetComponent<MeshRenderer>().enabled = false;
                 newForm.gameObject.SetActive(true);
                 transformText.SetActive(true);
@@ -157,6 +167,7 @@ public class PowerupPickup : MonoBehaviour
 
             print(rand);
             Destroy(other.gameObject.transform.parent.gameObject);
+            powered = true;
         }
     }
 }
