@@ -16,6 +16,8 @@ public class Door : MonoBehaviour
 
     public bool isDoorOpen;
 
+    public string whichDoor;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +43,7 @@ public class Door : MonoBehaviour
                 if (state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X== ButtonState.Released)
                 {
                     Debug.Log("plöö");
-                    animator.SetBool("IsOpen", true);
+                    animator.SetBool(whichDoor, true);
                     isDoorOpen = true;
 
                     //StartCoroutine()
@@ -52,7 +54,7 @@ public class Door : MonoBehaviour
                 if (state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released)
                 {
                     Debug.Log("plöö");
-                    animator.SetBool("IsOpen", false);
+                    animator.SetBool(whichDoor, false);
                     isDoorOpen = false;
                 }
             }
