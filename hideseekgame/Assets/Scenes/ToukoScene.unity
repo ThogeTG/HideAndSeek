@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 21161736}
+  - component: {fileID: 21161737}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -141,8 +142,27 @@ Transform:
   m_Children:
   - {fileID: 1157343440}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &21161737
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21161735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1fe24c05c5ccdbc4192c472e14fbfa50, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &35945780
 GameObject:
   m_ObjectHideFlags: 0
@@ -803,8 +823,8 @@ GameObject:
   - component: {fileID: 1157343439}
   - component: {fileID: 1157343438}
   - component: {fileID: 1157343437}
+  - component: {fileID: 1157343443}
   - component: {fileID: 1157343441}
-  - component: {fileID: 1157343442}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -896,25 +916,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4415af9e242f8c547b9caa8ddb90e22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1157343442
-Animator:
-  serializedVersion: 3
+  playerIndex: 0
+  isDoorOpen: 0
+--- !u!65 &1157343443
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157343436}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0ced087f912d72a4db9039d284715c9c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  serializedVersion: 2
+  m_Size: {x: 1.1431963, y: 1, z: 9.1274605}
+  m_Center: {x: 0.071598075, y: 0, z: -0.13214609}
 --- !u!1001 &1283256468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -926,6 +942,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902352364240766738, guid: 7734654805151564592fe12e311744d9,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3902352364240766188, guid: 7734654805151564592fe12e311744d9,
         type: 3}
@@ -965,7 +986,7 @@ PrefabInstance:
     - target: {fileID: 3902352364240766188, guid: 7734654805151564592fe12e311744d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3902352364240766188, guid: 7734654805151564592fe12e311744d9,
         type: 3}
@@ -986,6 +1007,16 @@ PrefabInstance:
         type: 3}
       propertyPath: smoothing
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902352364240766739, guid: 7734654805151564592fe12e311744d9,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 3902352364240766739, guid: 7734654805151564592fe12e311744d9,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7734654805151564592fe12e311744d9, type: 3}
@@ -1208,7 +1239,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2131327134
 MonoBehaviour:
