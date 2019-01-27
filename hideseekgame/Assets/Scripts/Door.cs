@@ -44,9 +44,8 @@ public class Door : MonoBehaviour
                 {
                     Debug.Log("plöö");
                     animator.SetBool(whichDoor, true);
-                    isDoorOpen = true;
-
-                    //StartCoroutine()
+                    StartCoroutine(WaitTrue());
+                    //isDoorOpen = true;
                 }
             }
             else if (isDoorOpen == true)
@@ -55,7 +54,7 @@ public class Door : MonoBehaviour
                 {
                     Debug.Log("plöö");
                     animator.SetBool(whichDoor, false);
-                    isDoorOpen = false;
+                    StartCoroutine(WaitFalse());   
                 }
             }
 
@@ -86,5 +85,17 @@ public class Door : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         
+    }
+
+    IEnumerator WaitTrue()
+    {
+        yield return new WaitForSeconds(1);
+        isDoorOpen = true;
+    }
+
+    IEnumerator WaitFalse()
+    {
+        yield return new WaitForSeconds(1);
+        isDoorOpen = false;
     }
 }
