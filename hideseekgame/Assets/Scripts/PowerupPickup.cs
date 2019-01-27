@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class PowerupPickup : MonoBehaviour
 {
@@ -8,9 +9,11 @@ public class PowerupPickup : MonoBehaviour
     Transform newForm;
     Movement move;
 
-    public GameObject[] shootItems;
+    public List<GameObject> shootItems = new List<GameObject>();
+    public List<GameObject> currentShoots = new List<GameObject>();
+    public GameObject kakka;
 
-    bool shooter;
+    bool shooter = true;
     Camera cam;
 
     public GameObject[] powerupTexts;
@@ -23,6 +26,13 @@ public class PowerupPickup : MonoBehaviour
     GameObject transformText;
 
     int playerId;
+
+    public PlayerIndex playerIndex;
+    GamePadState state;
+    GamePadState prevState;
+
+    GameObject childBin;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +57,7 @@ public class PowerupPickup : MonoBehaviour
         newForm = transform.GetChild(1);
         move = GetComponent<Movement>();
         cam = transform.GetChild(0).GetComponent<Camera>();
+        childBin = GameObject.Find("PutChildsHere");
 
         for (int i = 0; i < 4; i++)
         {
@@ -70,17 +81,32 @@ public class PowerupPickup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        prevState = state;
+        state = GamePad.GetState(playerIndex);
+
         if (shooter == true)
         {
-            if (Input.GetMouseButtonDown(1))
+            if (state.Buttons.Y == ButtonState.Pressed && prevState.Buttons.Y == ButtonState.Released)
             {
                 int rand;
-                GameObject makeshiftBullet;
+                //GameObject makeshiftBullet;
 
-                rand = Random.Range(0, shootItems.Length);
+                rand = Random.Range(0, shootItems.Count);
 
-                makeshiftBullet = Instantiate(shootItems[rand], transform);
-                makeshiftBullet.GetComponent<Rigidbody>().velocity =  cam.transform.forward * 50;
+                if (currentShoots.Count < 10)
+                {
+                    Vector3 position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+                    Instantiate(shootItems[rand], position, Quaternion.identity);
+                    currentShoots.Add(shootItems[rand]);
+                }
+                else if (currentShoots.Count > 10)
+                {
+
+                    /*Destroy(currentShoots[0]);
+                    currentShoots.RemoveAt(0);
+                    currentShoots.RemoveAll(list_item => list_item == null);*/
+                }
             }
         }
     }

@@ -968,6 +968,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: -107.812, y: 0, z: 0}
+--- !u!1 &1820189557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1820189558}
+  m_Layer: 0
+  m_Name: ShooterObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1820189558
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820189557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.941544, y: -26.76096, z: 37.964314}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915402830
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1275,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2824173732748876714, guid: f55c310f0bd48e9489348770409c488b,
         type: 3}
+      propertyPath: shootItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2824173732748876714, guid: f55c310f0bd48e9489348770409c488b,
+        type: 3}
       propertyPath: shootItems.Array.data[0]
+      value: 
+      objectReference: {fileID: 791789541}
+    - target: {fileID: 2824173732748876714, guid: f55c310f0bd48e9489348770409c488b,
+        type: 3}
+      propertyPath: shootItems.Array.data[1]
+      value: 
+      objectReference: {fileID: 791789541}
+    - target: {fileID: 2824173732748876714, guid: f55c310f0bd48e9489348770409c488b,
+        type: 3}
+      propertyPath: shootItems.Array.data[2]
+      value: 
+      objectReference: {fileID: 791789541}
+    - target: {fileID: 2824173732748876714, guid: f55c310f0bd48e9489348770409c488b,
+        type: 3}
+      propertyPath: shootItems.Array.data[3]
+      value: 
+      objectReference: {fileID: 791789541}
+    - target: {fileID: 2824173732748876714, guid: f55c310f0bd48e9489348770409c488b,
+        type: 3}
+      propertyPath: kakka
       value: 
       objectReference: {fileID: 791789541}
     m_RemovedComponents: []
