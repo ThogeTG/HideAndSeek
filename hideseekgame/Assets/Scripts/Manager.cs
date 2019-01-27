@@ -71,7 +71,7 @@ public class Manager : MonoBehaviour
         yield return new WaitForSeconds(3);
         inputsEnabled = true;
         text.color = Color.green;
-        timer = 10;
+        timer = 90;
         finished = false;
     }
     public void GameOver()
