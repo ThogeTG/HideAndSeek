@@ -49,6 +49,8 @@ public class Movement : MonoBehaviour
     GamePadState state;
     GamePadState prevState;
 
+    public Text caughtText;
+
 
 
     // Start is called before the first frame update
@@ -162,6 +164,9 @@ public class Movement : MonoBehaviour
         {
             manager.points.Add("Player " + collision.gameObject.GetComponent<Movement>().player.ToString() + "\n");
             collision.gameObject.GetComponent<Movement>().enabled = false;
+
+            collision.gameObject.GetComponent<Movement>().caughtText.text = "Youch!! You got caught!";
+            collision.gameObject.GetComponent<Movement>().caughtText.gameObject.SetActive(true);
 
             Camera cam = collision.gameObject.transform.GetComponentInChildren<Camera>();
             cam.clearFlags = CameraClearFlags.Skybox;
