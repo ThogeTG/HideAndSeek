@@ -7,6 +7,7 @@ using XInputDotNetPure;
 
 public class Movement : MonoBehaviour
 {
+    Manager manager;
     public int player;
     public PlayerIndex playerIndex;
     float realSpeed;
@@ -14,7 +15,7 @@ public class Movement : MonoBehaviour
     public float runSpeed = 20f;
     public float crawlSpeed = 2.5f;
 
-    
+    bool moving;
     float translation;
     float strafe;
 
@@ -53,6 +54,7 @@ public class Movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.Find("GameManager").GetComponent<Manager>();
         Cursor.lockState = CursorLockMode.Locked;
         camera = transform.GetChild(0);
         rigBod = GetComponent<Rigidbody>();
@@ -71,6 +73,18 @@ public class Movement : MonoBehaviour
     {
         prevState = state;
         state = GamePad.GetState(playerIndex);
+        if(manager.round == 1)
+        {
+            if(state.Buttons.LeftShoulder == ButtonState.Pressed && prevState.Buttons.LeftShoulder == ButtonState.Released && !moving)
+            {
+                moving = true;
+                Camera cam = transform.GetComponentInChildren<Camera>();
+                cam.clearFlags = CameraClearFlags.Skybox;
+                cam.backgroundColor = Color.blue;
+                cam.cullingMask = -1;
+                cam.fieldOfView = 60;
+            }
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -92,11 +106,11 @@ public class Movement : MonoBehaviour
 
     void Move()
     {
-        if (state.Buttons.RightShoulder == ButtonState.Pressed)
+        if (state.Buttons.RightShoulder == ButtonState.Pressed && manager.inputsEnabled)
         {
             realSpeed = runSpeed;
         }
-        else if (state.Buttons.B == ButtonState.Pressed)
+        else if (state.Buttons.B == ButtonState.Pressed && manager.inputsEnabled)
         {
             realSpeed = crawlSpeed;
         }
@@ -119,7 +133,7 @@ public class Movement : MonoBehaviour
     {
         Vector3 pos = transform.position;
 
-        if (state.Buttons.B == ButtonState.Pressed && prevState.Buttons.B == ButtonState.Released)
+        if (state.Buttons.B == ButtonState.Pressed && prevState.Buttons.B == ButtonState.Released && manager.inputsEnabled)
         {
             if (!crouching)
             {
@@ -142,9 +156,20 @@ public class Movement : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
+        if (manager.round == 1 && collision.transform.tag == "Player" && player == 1)
+        {
+            manager.points.Add("Player " + collision.gameObject.GetComponent<Movement>().player.ToString() + "\n");
+            collision.gameObject.GetComponent<Movement>().enabled = false;
 
+            Camera cam = collision.gameObject.transform.GetComponentInChildren<Camera>();
+            cam.clearFlags = CameraClearFlags.Skybox;
+            cam.backgroundColor = Color.blue;
+            cam.cullingMask = -1;
+            cam.fieldOfView = 60;
+
+        }
     }
 
     public void DisplayText()

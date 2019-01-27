@@ -5,6 +5,7 @@ using XInputDotNetPure;
 
 public class ItemHold : MonoBehaviour
 {
+    Manager manager;
     Transform originParent;
     GameObject heldObject;
     Vector3 holdPosition;
@@ -24,6 +25,7 @@ public class ItemHold : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        manager = GameObject.Find("GameManager").GetComponent<Manager>();
         cam = gameObject.transform.GetChild(0).gameObject.GetComponent<Camera>();
     }
 
@@ -40,12 +42,12 @@ public class ItemHold : MonoBehaviour
                 heldObject.transform.rotation = gameObject.transform.GetChild(0).rotation;
                 heldObject.transform.position = gameObject.transform.GetChild(0).position + (heldObject.transform.rotation * (Vector3.forward - height) * distance);
 
-                if (state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released)
+                if (state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released && manager.inputsEnabled)
                 {
                     holding = false;
                 }
 
-                if (state.Buttons.Y == ButtonState.Pressed && prevState.Buttons.Y == ButtonState.Released)
+                if (state.Buttons.Y == ButtonState.Pressed && prevState.Buttons.Y == ButtonState.Released && manager.inputsEnabled)
                 {
                     heldObject.GetComponent<Rigidbody>().velocity = cam.transform.forward * throwPower;
 
@@ -62,7 +64,7 @@ public class ItemHold : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Holdable" && state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released)
+        if (other.gameObject.tag == "Holdable" && state.Buttons.X == ButtonState.Pressed && prevState.Buttons.X == ButtonState.Released && manager.inputsEnabled)
         {
             Hold(other.gameObject.transform.parent.gameObject);
         }
