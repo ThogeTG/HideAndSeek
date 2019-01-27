@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: ffb567a0bc34bf344932d7f3140ac170
+=======
+guid: d577e91706850e645ab64c66ac21f61b
+>>>>>>> maru
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
